@@ -1,0 +1,11 @@
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: bets
+  description: Bets Configuration
+spec:
+  targets:
+    - ./bets-team.yaml
+    - ./players-team.yaml
+    - ./matches-team.yaml
+    - ./championships-team.yaml

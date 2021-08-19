@@ -1,0 +1,24 @@
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: championships
+  description: Team Championships
+spec:
+  type: team
+  profile:
+    # Intentional no displayName for testing
+    email: championships@bets.com
+    picture: https://avatars.dicebear.com/api/identicon/team-a@example.com.svg?background=%23fff&margin=25
+  parent: backstage
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: colette.brock
+spec:
+  profile:
+    displayName: Colette Brock
+    email: colette-brock@example.com
+    picture: https://avatars.dicebear.com/api/avataaars/colette-brock@example.com.svg?background=%23fff
+  memberOf: [championships]
