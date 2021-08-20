@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
-  name: API Pipelines
+  name: api-pipelines
 spec:
   targets:
   - ./hello-world-api.yaml
