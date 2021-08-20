@@ -11,14 +11,3 @@ spec:
     picture: https://avatars.dicebear.com/api/identicon/team-a@example.com.svg?background=%23fff&margin=25
   parent: backstage
   children: []
----
-apiVersion: backstage.io/v1alpha1
-kind: User
-metadata:
-  name: jenny.doe
-spec:
-  profile:
-    displayName: Jenny Doe
-    email: jenny-doe@example.com
-    picture: https://avatars.dicebear.com/api/avataaars/jenny-doe@example.com.svg?background=%23fff
-  memberOf: [bets]
