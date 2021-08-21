@@ -69,5 +69,5 @@ spec:
                     name: Joe Doe
                     email: joe@doe.com
   service:
-    port: 8080
+    port: 9999
     type: ClusterIP
