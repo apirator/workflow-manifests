@@ -6,4 +6,5 @@ spec:
   targets:
   - ./hello-world-api.yaml
   - ../players-v5.yaml
+  - ../players-v2.yaml
   type: url
