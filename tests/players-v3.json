@@ -1,0 +1,171 @@
+{
+  "_": {
+    "postman_id": "996314a0-7519-4b29-8d46-fd9d2ed6c8e6"
+  },
+  "item": [
+    {
+      "id": "3d987195-58de-42bd-ba7d-5e29e9c1ab87",
+      "name": "Contract Tests",
+      "item": [
+        {
+          "id": "6b82ae59-de77-4852-a7cd-5e3737aef45c",
+          "name": "players",
+          "item": [
+            {
+              "id": "9e00aef7-6825-4d36-be11-4667f4aabf31",
+              "name": "Get Player Details",
+              "request": {
+                "name": "Get Player Details",
+                "description": {
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "players",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Player ID",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "dolor enim tempor",
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "GET"
+              },
+              "response": [
+                {
+                  "_": {
+                    "postman_previewlanguage": "json"
+                  },
+                  "id": "e8547f01-3b67-4ef1-b04c-5e60dee2fb04",
+                  "name": "When player was found\n",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "players",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "key": "id"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n \"username\": \"joe\",\n \"email\": \"joe@doe.com\"\n}",
+                  "cookie": []
+                },
+                {
+                  "_": {
+                    "postman_previewlanguage": "json"
+                  },
+                  "id": "3a003207-dcd9-4866-8b40-7edca1c735bf",
+                  "name": "404 response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "players",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "key": "id"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n \"code\": 404,\n \"message\": \"not found\"\n}",
+                  "cookie": []
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62c647fc-213c-43eb-9538-e593225157cc",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate status 2xx \npm.test(\"[GET]::/players/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[GET]::/players/:id - Content-Type is application/json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[GET]::/players/:id - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n",
+                      "// Response Validation\nconst schema = {\"title\":\"Root Type for player\",\"description\":\"Player Data\",\"type\":\"object\",\"properties\":{\"username\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"example\":{\"username\":\"joe\",\"email\":\"joe@doe.com\"}}\n\n// Validate if response matches JSON schema \npm.test(\"[GET]::/players/:id - Schema is valid\", function() {\n    pm.response.to.have.jsonSchema(schema,{unknownFormats: [\"int32\", \"int64\"]});\n});\n"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "70d6a640-db0f-45e8-bc60-0c2ad1a4e1d6",
+        "type": "text/javascript",
+        "exec": []
+      }
+    }
+  ],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://apis.apiriders.cloud/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "996314a0-7519-4b29-8d46-fd9d2ed6c8e6",
+    "name": "Bets - Players API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Apirator Dev Team\n Email: apirator@apirator.io",
+      "type": "text/plain"
+    }
+  }
+}
