@@ -7,4 +7,5 @@ spec:
   - ./hello-world-api.yaml
   - ../players-v5.yaml
   - ../players-v2.yaml
+  - ../players-v10.yaml
   type: url
