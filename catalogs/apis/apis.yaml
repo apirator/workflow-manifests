@@ -5,6 +5,4 @@ metadata:
 spec:
   targets:
   - ./hello-world-api.yaml
-  - ../players-v1.yaml
-  - ../players-v2.yaml
   type: url
