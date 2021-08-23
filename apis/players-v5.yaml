@@ -13,3 +13,18 @@ spec:
               serviceName: players-v5
               servicePort: 80
             path: /v5/.*
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: bets-players-api-0
+  annotations:
+    kubernetes.io/ingress.class: kong
+spec:
+  rules:
+    - host: apis.apiriders.cloud
+      http:
+        paths:
+          - backend:
+              serviceName: players
+              servicePort: 80
+            path: /v10/.*
