@@ -2,14 +2,14 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   description: A mock for the service
-  name: players-v2
+  name: players-v1
 spec:
   definition: |
     openapi: 3.0.0
     x-kong-name: players
     info:
       x-kubernetes-ingress-metadata:
-        name: players-v2
+        name: players-v1
       title: Bets - Players API
       version: 2.0.0
       contact:
