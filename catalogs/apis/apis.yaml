@@ -5,6 +5,4 @@ metadata:
 spec:
   targets:
   - ../players-v1.yaml
-  - ../players-v2.yaml
-  - ../players-v3.yaml
   type: url
