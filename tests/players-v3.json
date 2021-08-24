@@ -1,0 +1,171 @@
+{
+  "_": {
+    "postman_id": "041ddf3d-8a7c-4ba4-a2a5-df24c4ad77ca"
+  },
+  "item": [
+    {
+      "id": "41d0d464-cc2b-4f84-a0e3-4ce97aaddca4",
+      "name": "Contract Tests",
+      "item": [
+        {
+          "id": "8b41a91a-6fa7-4bf0-a160-f0f2755fd2c9",
+          "name": "players",
+          "item": [
+            {
+              "id": "634b4cd7-35f9-4906-93bf-a6ac12787cda",
+              "name": "Get Player Details",
+              "request": {
+                "name": "Get Player Details",
+                "description": {
+                  "type": "text/plain"
+                },
+                "url": {
+                  "path": [
+                    "players",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) Player ID",
+                        "type": "text/plain"
+                      },
+                      "type": "any",
+                      "value": "veli",
+                      "key": "id"
+                    }
+                  ]
+                },
+                "method": "GET"
+              },
+              "response": [
+                {
+                  "_": {
+                    "postman_previewlanguage": "json"
+                  },
+                  "id": "148952df-679b-412c-87c9-c9fbc86a8fdd",
+                  "name": "When player was found\n",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "players",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "key": "id"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n \"username\": \"joe\",\n \"email\": \"joe@doe.com\"\n}",
+                  "cookie": []
+                },
+                {
+                  "_": {
+                    "postman_previewlanguage": "json"
+                  },
+                  "id": "4b06d97b-d982-46f9-b46f-ddf235a2b4e5",
+                  "name": "404 response",
+                  "originalRequest": {
+                    "url": {
+                      "path": [
+                        "players",
+                        ":id"
+                      ],
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "query": [],
+                      "variable": [
+                        {
+                          "type": "any",
+                          "key": "id"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "body": {}
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "body": "{\n \"code\": 404,\n \"message\": \"not found\"\n}",
+                  "cookie": []
+                }
+              ],
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "2570c06e-2d59-479c-9a45-cb48e9b4acb2",
+                    "type": "text/javascript",
+                    "exec": [
+                      "// Validate status 2xx \npm.test(\"[GET]::/players/:id - Status code is 2xx\", function () {\n   pm.response.to.be.success;\n});\n",
+                      "// Validate if response header has matching content-type\npm.test(\"[GET]::/players/:id - Content-Type is application/json\", function () {\n   pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");\n});\n",
+                      "// Validate if response has JSON Body \npm.test(\"[GET]::/players/:id - Response has JSON Body\", function () {\n    pm.response.to.have.jsonBody();\n});\n",
+                      "// Response Validation\nconst schema = {\"title\":\"Root Type for player\",\"description\":\"Player Data\",\"type\":\"object\",\"properties\":{\"username\":{\"type\":\"string\"},\"email\":{\"type\":\"string\"}},\"example\":{\"username\":\"joe\",\"email\":\"joe@doe.com\"}}\n\n// Validate if response matches JSON schema \npm.test(\"[GET]::/players/:id - Schema is valid\", function() {\n    pm.response.to.have.jsonSchema(schema,{unknownFormats: [\"int32\", \"int64\"]});\n});\n"
+                    ]
+                  }
+                }
+              ]
+            }
+          ],
+          "event": []
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "128fb3ca-c054-466e-880c-65b71d938c04",
+        "type": "text/javascript",
+        "exec": []
+      }
+    }
+  ],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://apis.apiriders.cloud/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "041ddf3d-8a7c-4ba4-a2a5-df24c4ad77ca",
+    "name": "Bets - Players API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Contact Support:\n Name: Apirator Dev Team\n Email: apirator@apirator.io",
+      "type": "text/plain"
+    }
+  }
+}
